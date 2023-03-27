@@ -75,4 +75,7 @@ func ProvideBasicContextResponse(ginEngine *gin.Engine) {
 	ResponseFromReader(ginEngine)  // 从Reader中读入响应内容
 	ResponseRedirecDemo(ginEngine) // 重定向
 
+	// 路由分组
+	RouterGroupDemo(ginEngine)
+
 }

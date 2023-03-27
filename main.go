@@ -5,13 +5,15 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/ryanreadbooks/go-gin-examples/basic"
+	"github.com/ryanreadbooks/go-gin-examples/middleware"
 )
 
 var ginEngine *gin.Engine
 
 var (
-	usebasicResponse = flag.Bool("use-basic-response", true, "Turn APIs provided in basic response")
-	usebasicRequest  = flag.Bool("use-basic-request", true, "Turn APIs provided in basic request")
+	usebasicResponse = flag.Bool("use-basic-response", false, "Turn on APIs provided in basic response")
+	usebasicRequest  = flag.Bool("use-basic-request", false, "Turn on APIs provided in basic request")
+	useMiddleware    = flag.Bool("use-middleware", true, "Turn on APIs provided in middleware examples")
 )
 
 func init() {
@@ -25,6 +27,11 @@ func main() {
 	}
 	if *usebasicRequest {
 		basic.ProvideBasicContextRequest(ginEngine)
+	}
+	if *useMiddleware {
+		middleware.AddGlobalMiddleware(ginEngine)
+		middleware.AddGroupMiddleware(ginEngine)
+		middleware.MiddleCommunication(ginEngine)
 	}
 	ginEngine.Run()
 }
