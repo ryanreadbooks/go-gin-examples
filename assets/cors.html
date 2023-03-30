@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  Hello CORS Example!
+</head>
+
+<body>
+  <!-- <script src="http://127.0.0.1:8080/basic/query?name=ryan&age=19" type="text/javascript">
+  </script> -->
+  <script>
+    fetch( "http://127.0.0.1:8080/cors-gin/get" )
+    .then( response =>  response.json() )
+    .then( data => console.log(data.like) )
+  </script>
+</body>
+
+</html>
